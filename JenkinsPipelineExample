@@ -19,7 +19,7 @@ pipeline {
       }
       stage('TestProject Tests') {
 	 steps {
-	    tpJobRun agentId: '1QL2czQNgEuL3lO16I8d8w', jobId: 'gCEGeby430K7ypCUAdXNWQ', projectId: 'ojtv5lh-sEq3Ys1gsubRFg', waitJobFinishSeconds: 300
+	    tpJobRun agentId: 'AGENTID', jobId: 'JOBID', projectId: 'PROJECT_ID', waitJobFinishSeconds: 300
 	    
 
 	 }
