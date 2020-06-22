@@ -1,0 +1,30 @@
+version: "3.1"
+services:
+  Testproject-agent:
+    image: testproject/agent:latest
+    container_name: testproject-agentPersistent1
+    depends_on:
+      - chrome
+      - firefox
+    volumes: 
+      - /Users/anand/testproject-demo/testprojectvolume:/var/testproject/agent
+    environment:
+      TP_API_KEY: "YOURAPIKEY"
+      TP_AGENT_ALIAS: "Docker Agent"
+    #   TP_JOB_ID: <job_id>
+    #   TP_JOB_PARAMS: '"jobParameters" : { "browsers": [ "chrome", "firefox" ] }'
+      TP_AGENT_ALIAS: "DockerPersistent"
+      CHROME: "chrome:4444"
+      FIREFOX: "firefox:4444"
+  chrome:
+    image: selenium/standalone-chrome-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5912:5900"
+  firefox:
+    image: selenium/standalone-firefox-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5911:5900"
