@@ -1,0 +1,28 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Build Application') {
+         steps {
+            // Get some code from a GitHub repository
+            git 'https://gitlab.com/anandbhagwatdevops/node-backend-app.git'
+           
+         }
+
+      }
+      stage('Run Application') {
+	 steps {
+
+	    sh "node app.js &"
+
+	 }
+      }
+      stage('TestProject Tests') {
+	 steps {
+	    tpJobRun agentId: '1QL2czQNgEuL3lO16I8d8w', jobId: 'gCEGeby430K7ypCUAdXNWQ', projectId: 'ojtv5lh-sEq3Ys1gsubRFg', waitJobFinishSeconds: 300
+	    
+
+	 }
+      }
+   }
+}
